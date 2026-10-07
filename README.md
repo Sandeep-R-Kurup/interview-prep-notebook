@@ -23,9 +23,9 @@ Needs Node.js 18 or newer.
 
 1. Create a new repo on GitHub (public, for free Pages).
 2. Push this folder to its `main` branch.
-3. In the repo: Settings, Pages, Source: **GitHub Actions**.
+3. The workflow `.github/workflows/deploy.yml` builds the site and pushes it to the `gh-pages` branch. If the site does not appear, set Settings, Pages, Source: **Deploy from a branch**, branch `gh-pages`, folder `/ (root)`.
 
-Every push to `main` then builds and publishes the site via `.github/workflows/deploy.yml`. The URL is `https://<your-username>.github.io/<repo-name>/`.
+Every push to `main` then rebuilds and republishes the site. The URL is `https://<your-username>.github.io/<repo-name>/`.
 
 ## What's in the app
 
