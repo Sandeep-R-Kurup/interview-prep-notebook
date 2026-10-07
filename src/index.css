@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { @apply bg-paper text-ink font-sans antialiased dark:bg-paper-dark dark:text-ink-dark; }
+:focus-visible { outline: 2px solid #2F5D9A; outline-offset: 2px; border-radius: 4px; }
+.dark :focus-visible { outline-color: #7FA8E0; }
+
+/* Reading prose */
+.prose-read { @apply font-serif text-[1.075rem] leading-[1.75]; }
+.prose-read p + p { margin-top: 0.85em; }
+.prose-read code { @apply font-mono text-[0.85em] px-1 py-0.5 rounded bg-rule/60 dark:bg-rule-dark; }
+
+/* The highlighter stroke used for key takeaways */
+.marker {
+  background-image: linear-gradient(104deg, rgba(255,226,122,0) 0.9%, rgba(255,226,122,.95) 2.4%, rgba(255,226,122,.75) 5.8%, rgba(255,226,122,.35) 93%, rgba(255,226,122,.7) 96%, rgba(255,226,122,0) 98%);
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  padding: 0.05em 0.3em; border-radius: 0.3em;
+}
+.dark .marker { color: #1B2540; }
+
+/* Flip cards */
+.flip { perspective: 1200px; }
+.flip-inner { transition: transform .5s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; position: relative; }
+.flip-inner.is-flipped { transform: rotateY(180deg); }
+.flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-back { transform: rotateY(180deg); position: absolute; inset: 0; }
+@media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
+
+/* Swipe cards: the browser keeps vertical scrolling, we handle horizontal drags */
+.swipe-card { touch-action: pan-y; will-change: transform; }
+.reveal { animation: reveal .25s ease-out; }
+@keyframes reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .reveal { animation: none; } }
